@@ -51,5 +51,14 @@ def gen_array(lenght):
         a.append(random.randint(0, 10))
     return a      
 
+def get_matrix(lenght, wight):
+    a = []
+    for i in range(lenght):
+        b = []
+        for j in range(wight):
+            b.append(int(input()))
+        a.append(b)
+    return a    
+
 if __name__ == "__main__":
-    print(gen_array(5))
+    print(get_matrix(3, 3))
