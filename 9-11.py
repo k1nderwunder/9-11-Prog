@@ -69,5 +69,38 @@ def gen_matrix(lenght, wight):
         a.append(b)
     return a     
 
+def choice_mas():
+    print("Gen - случайно сгенерировать массив, Get - ввести массив вручную")
+    ch = input()
+    if ch == 'Get':
+        print("Введите длину массива")
+        lenght = int(input())
+        return get_array(lenght)
+    elif ch == 'Gen':
+        print("Введите длину массива")
+        lenght = int(input())
+        return gen_array(lenght)
+    else:
+        print("Неверный выбор")
+
+def choice_matrix():
+    print("Gen - случайно сгенерировать матрицу, Get - ввести матрицу вручную")
+    ch = input()
+    if ch == 'Get':
+        print("Введите длину матрицы")
+        lenght = int(input())
+        print("Введите ширину матрицы")
+        width = int(input())
+        return get_matrix(lenght,width)
+    elif ch == 'Gen':
+        print("Введите длину матрицы")
+        lenght = int(input())
+        print("Введите ширину матрицы")
+        width = int(input())
+        return gen_matrix(lenght,width)
+    else:
+        print("Неверный выбор")    
+
 if __name__ == "__main__":
-    print(gen_matrix(3, 3))
+    print(choice_mas())
+    print(choice_matrix())
