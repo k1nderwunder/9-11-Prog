@@ -1,3 +1,6 @@
+import random
+
+
 def big_sum(mas_a, mas_b):
     int_mas_a = int(''.join(map(str, mas_a)))
     int_mas_b = int(''.join(map(str, mas_b)))
@@ -40,7 +43,13 @@ def get_array(lenght):
     a = []
     for i in range(lenght):
         a.append(int(input()))
-    return a     
+    return a   
+
+def gen_array(lenght):
+    a = []
+    for i in range(lenght):
+        a.append(random.randint(0, 10))
+    return a      
 
 if __name__ == "__main__":
-    print(get_array(5))
+    print(gen_array(5))
