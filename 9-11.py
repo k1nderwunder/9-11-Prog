@@ -20,8 +20,9 @@ def big_minus(mas_a, mas_b):
     mas_x.reverse()
     return mas_x
 
+def rotate90(matrix):
+    return [list(reversed(col)) for col in zip(*matrix)]
+
 if __name__ == "__main__":
-    x = [2, 3, 4]
-    y = [4, 3, 2]
-    print(big_minus(y,x))
-    print(432 - 234)
+    a = [[2, 3], [3, 4]]
+    print(rotate90(a))
