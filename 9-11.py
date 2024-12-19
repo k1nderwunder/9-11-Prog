@@ -1,7 +1,13 @@
 import random
 
-
 def big_sum(mas_a, mas_b):
+    """
+    Функция вычисляет сумму двух больших чисел, представленных в виде массивов цифр.
+
+    :param mas_a: Массив цифр, представляющий первое большое число.
+    :param mas_b: Массив цифр, представляющий второе большое число.
+    :return: Массив цифр, представляющий сумму двух больших чисел.
+    """
     int_mas_a = int(''.join(map(str, mas_a)))
     int_mas_b = int(''.join(map(str, mas_b)))
     x = int_mas_a + int_mas_b
@@ -11,8 +17,14 @@ def big_sum(mas_a, mas_b):
         x //= 10
     return mas_x[::-1]
 
-
 def big_minus(mas_a, mas_b):
+    """
+    Функция вычисляет разность двух больших чисел, представленных в виде массивов цифр.
+
+    :param mas_a: Массив цифр, представляющий первое большое число.
+    :param mas_b: Массив цифр, представляющий второе большое число.
+    :return: Массив цифр, представляющий разность двух больших чисел.
+    """
     int_mas_a = int(''.join(map(str, mas_a)))
     int_mas_b = int(''.join(map(str, mas_b)))
     z = int_mas_a - int_mas_b
@@ -27,12 +39,31 @@ def big_minus(mas_a, mas_b):
     return mas_x[::-1]
 
 def rotate90(matrix):
+    """
+    Функция поворачивает матрицу на 90 градусов по часовой стрелке.
+
+    :param matrix: Исходная матрица.
+    :return: Матрица, повернутая на 90 градусов по часовой стрелке.
+    """
     return [list(reversed(col)) for col in zip(*matrix)]
 
 def rotate270(matrix):
-    return [list(row) for row in list(zip(*matrix))[::-1]]    
+    """
+    Функция поворачивает матрицу на 90 градусов против часовой стрелки.
+
+    :param matrix: Исходная матрица.
+    :return: Матрица, повернутая на 90 градусов против часовой стрелки.
+    """
+    return [list(row) for row in list(zip(*matrix))[::-1]]
 
 def same_numbers(mas_a, mas_b):
+    """
+    Функция проверяет, сколько у двух массивов общих чисел, включая перевернутые версии чисел.
+
+    :param mas_a: Первый массив чисел.
+    :param mas_b: Второй массив чисел.
+    :return: Количество общих чисел в двух массивах.
+    """
     k = 0
     for i in range(len(mas_a)):
         a = abs(mas_a[i])
@@ -40,73 +71,114 @@ def same_numbers(mas_a, mas_b):
             b = abs(mas_b[j])
             if a == b:
                 k += 1
-    return k   
+    return k
 
-def get_array(lenght):
+def get_array(length):
+    """
+    Функция запрашивает у пользователя ввод массива заданной длины.
+
+    :param length: Длина массива.
+    :return: Массив, введенный пользователем.
+    """
     a = []
-    for i in range(lenght):
+    for i in range(length):
         a.append(int(input()))
-    return a   
+    return a
 
-def gen_array(lenght):
+def gen_array(length):
+    """
+    Функция генерирует массив случайных чисел заданной длины.
+
+    :param length: Длина массива.
+    :return: Массив случайных чисел.
+    """
     a = []
-    for i in range(lenght):
+    for i in range(length):
         a.append(random.randint(0, 10))
-    return a      
+    return a
 
-def get_matrix(lenght, wight):
+def get_matrix(length, width):
+    """
+    Функция запрашивает у пользователя ввод матрицы заданных размеров.
+
+    :param length: Количество строк матрицы.
+    :param width: Количество столбцов матрицы.
+    :return: Матрица, введенная пользователем.
+    """
     a = []
-    for i in range(lenght):
+    for i in range(length):
         b = []
-        for j in range(wight):
+        for j in range(width):
             b.append(int(input()))
         a.append(b)
-    return a   
+    return a
 
-def gen_matrix(lenght, wight):
+def gen_matrix(length, width):
+    """
+    Функция генерирует матрицу случайных чисел заданных размеров.
+
+    :param length: Количество строк матрицы.
+    :param width: Количество столбцов матрицы.
+    :return: Матрица случайных чисел.
+    """
     a = []
-    for i in range(lenght):
+    for i in range(length):
         b = []
-        for j in range(wight):
+        for j in range(width):
             b.append(random.randint(0, 9))
         a.append(b)
-    return a     
+    return a
 
 def choice_mas():
+    """
+    Функция запрашивает у пользователя выбор способа создания массива (ввод вручную или генерация случайных чисел).
+
+    :return: Массив, созданный выбранным способом.
+    """
     while True:
         print("Gen - случайно сгенерировать массив, Get - ввести массив вручную")
         ch = input()
         if ch == 'Get':
             print("Введите длину массива")
-            lenght = int(input())
-            return get_array(lenght)
+            length = int(input())
+            return get_array(length)
         elif ch == 'Gen':
             print("Введите длину массива")
-            lenght = int(input())
-            return gen_array(lenght)
+            length = int(input())
+            return gen_array(length)
         else:
             print("Неверный выбор")
 
 def choice_matrix():
+    """
+    Функция запрашивает у пользователя выбор способа создания матрицы (ввод вручную или генерация случайных чисел).
+
+    :return: Матрица, созданная выбранным способом.
+    """
     while True:
         print("Gen - случайно сгенерировать матрицу, Get - ввести матрицу вручную")
         ch = input()
         if ch == 'Get':
             print("Введите длину матрицы")
-            lenght = int(input())
+            length = int(input())
             print("Введите ширину матрицы")
             width = int(input())
-            return get_matrix(lenght,width)
+            return get_matrix(length, width)
         elif ch == 'Gen':
             print("Введите длину матрицы")
-            lenght = int(input())
+            length = int(input())
             print("Введите ширину матрицы")
             width = int(input())
-            return gen_matrix(lenght, width)
+            return gen_matrix(length, width)
         else:
-            print("Неверный выбор")  
+            print("Неверный выбор")
 
 def menu(point):
+    """
+    Функция обрабатывает выбор пункта меню и выполняет соответствующие действия.
+
+    :param point: Номер выбранного пункта меню.
+    """
     if point == 1:
         mas_a = choice_mas()
         mas_b = choice_mas()
@@ -132,17 +204,17 @@ def menu(point):
         x = int(input())
         if x == 1:
             print(big_sum(mas_a, mas_b))
-        elif x== 2:
+        elif x == 2:
             print(big_minus(mas_a, mas_b))
         else:
-            print("Ошибка")   
-        return 
+            print("Ошибка")
+        return
 
     elif point == 4:
         exit()
 
     else:
-        print("Такого пункта нет!")          
+        print("Такого пункта нет!")
 
 if __name__ == "__main__":
     while True:
