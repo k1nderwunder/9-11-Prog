@@ -1,4 +1,5 @@
 import random
+import threading
 
 def big_sum(mas_a, mas_b):
     """
@@ -173,51 +174,59 @@ def choice_matrix():
         else:
             print("Неверный выбор")
 
-def menu(point):
+def menu():
     """
     Функция обрабатывает выбор пункта меню и выполняет соответствующие действия.
-
-    :param point: Номер выбранного пункта меню.
     """
-    if point == 1:
-        mas_a = choice_mas()
-        mas_b = choice_mas()
-        print(same_numbers(mas_a, mas_b))
-        return
+    while True:
+        print("Задачи \n 1. Входные данные: 2 массива с числами. Требуется проверить, сколько у массивов общих чисел. Также, число будет считаться общим, если оно входит в один массив, а в другом массиве находится его перевернутая версия. \n 2. Входные данные: матрица N на M. Требуется повернуть матрицу на 90 градусов против часовой или по часовой. \n 3. Входные данные: 2 массива с цифрами, каждый представляет собой большое число. Нужно произвести сумму или разность массивов. \n 4. Закончить работу программы")
+        print("Выберите пункт меню")
+        point = int(input())
 
-    if point == 2:
-        mat = choice_matrix()
-        print("Повернуть матрицу направо (1) или налево (2)")
-        x = int(input())
-        if x == 1:
-            print(rotate90(mat))
-        elif x == 2:
-            print(rotate270(mat))
+        if point == 1:
+            thread = threading.Thread(target=task_same_numbers)
+        elif point == 2:
+            thread = threading.Thread(target=task_rotate_matrix)
+        elif point == 3:
+            thread = threading.Thread(target=task_big_operations)
+        elif point == 4:
+            exit()
         else:
-            print("Ошибка")
-        return
+            print("Такого пункта нет!")
+            continue
 
-    elif point == 3:
-        mas_a = choice_mas()
-        mas_b = choice_mas()
-        print("Сумма (1) или разность (2) массивов")
-        x = int(input())
-        if x == 1:
-            print(big_sum(mas_a, mas_b))
-        elif x == 2:
-            print(big_minus(mas_a, mas_b))
-        else:
-            print("Ошибка")
-        return
+        thread.start()
+        thread.join()
 
-    elif point == 4:
-        exit()
+def task_same_numbers():
+    mas_a = choice_mas()
+    mas_b = choice_mas()
+    print(same_numbers(mas_a, mas_b))
 
+def task_rotate_matrix():
+    mat = choice_matrix()
+    print("Повернуть матрицу направо (1) или налево (2)")
+    x = int(input())
+    if x == 1:
+        print(rotate90(mat))
+    elif x == 2:
+        print(rotate270(mat))
+    else:
+        print("Ошибка")
+
+def task_big_operations():
+    mas_a = choice_mas()
+    mas_b = choice_mas()
+    print("Сумма (1) или разность (2) массивов")
+    x = int(input())
+    if x == 1:
+        print(big_sum(mas_a, mas_b))
+    elif x == 2:
+        print(big_minus(mas_a, mas_b))
     else:
         print("Такого пункта нет!")
 
 if __name__ == "__main__":
-    while True:
-        print("Задачи \n 1. Входные данные: 2 массива с числами. Требуется проверить, сколько у массивов общих чисел. Также, число будет считаться общим, если оно входит в один массив, а в другом массиве находится его перевернутая версия. \n 2. Входные данные: матрица N на M. Требуется повернуть матрицу на 90 градусов против часовой или по часовой. \n 3. Входные данные: 2 массива с цифрами, каждый представляет собой большое число. Нужно произвести сумму или разность массивов. \n 4. Закончить работу программы")
-        print("Выберите пункт меню")
-        menu(int(input()))
+    menu_thread = threading.Thread(target=menu)
+    menu_thread.start()
+    menu_thread.join()
