@@ -58,7 +58,16 @@ def get_matrix(lenght, wight):
         for j in range(wight):
             b.append(int(input()))
         a.append(b)
-    return a    
+    return a   
+
+def gen_matrix(lenght, wight):
+    a = []
+    for i in range(lenght):
+        b = []
+        for j in range(wight):
+            b.append(random.randint(0, 9))
+        a.append(b)
+    return a     
 
 if __name__ == "__main__":
-    print(get_matrix(3, 3))
+    print(gen_matrix(3, 3))
