@@ -34,9 +34,13 @@ def same_numbers(mas_a, mas_b):
             b = abs(mas_b[j])
             if a == b:
                 k += 1
-    return k    
+    return k   
+
+def get_array(lenght):
+    a = []
+    for i in range(lenght):
+        a.append(int(input()))
+    return a     
 
 if __name__ == "__main__":
-    x = [2, 3, 4]
-    y = [5, 4, 3]
-    print(same_numbers(x,y))
+    print(get_array(5))
