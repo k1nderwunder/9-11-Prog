@@ -26,6 +26,17 @@ def rotate90(matrix):
 def rotate270(matrix):
     return [list(row) for row in list(zip(*matrix))[::-1]]    
 
+def same_numbers(mas_a, mas_b):
+    k = 0
+    for i in range(len(mas_a)):
+        a = abs(mas_a[i])
+        for j in range(len(mas_b)):
+            b = abs(mas_b[j])
+            if a == b:
+                k += 1
+    return k    
+
 if __name__ == "__main__":
-    a = [[2, 3], [3, 4]]
-    print(rotate270(a))
+    x = [2, 3, 4]
+    y = [5, 4, 3]
+    print(same_numbers(x,y))
